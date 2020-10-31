@@ -34,6 +34,27 @@
     <Content Include="README.md" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\" />
+    <Folder Include="app\config\" />
+    <Folder Include="app\controller\" />
+    <Folder Include="app\module\" />
+    <Folder Include="app\service\" />
+    <Folder Include="app\view\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\config\index.ts" />
+    <TypeScriptCompile Include="app\controller\index.ts" />
+    <TypeScriptCompile Include="app\index.ts" />
+    <TypeScriptCompile Include="app\module\index.ts" />
+    <TypeScriptCompile Include="app\module\server-http.ts" />
+    <TypeScriptCompile Include="app\module\client-http.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="app\service\index.ts" />
+    <TypeScriptCompile Include="app\view\index.ts" />
+    <TypeScriptCompile Include="server-http.ts" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
     <VisualStudio>
