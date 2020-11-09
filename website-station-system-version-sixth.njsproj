@@ -53,6 +53,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="app\service\index.ts" />
     <TypeScriptCompile Include="app\view\index.ts" />
+    <TypeScriptCompile Include="build.ts" />
     <TypeScriptCompile Include="server-http.ts" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
