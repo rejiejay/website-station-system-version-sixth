@@ -5,6 +5,7 @@ function init(config) {
     const slef = this
 
     return new Promise(resolve => {
+        // https://github.com/theturtle32/WebSocket-Node
         const wss = new WebSocketServer(config, () => resolve())
         slef.instance = wss
         wss.on('connection', slef.connection)
