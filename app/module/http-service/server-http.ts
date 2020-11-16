@@ -39,5 +39,4 @@ const serverHttp = {
     requestHandle,
 }
 
-
 export default serverHttp

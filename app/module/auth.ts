@@ -13,7 +13,7 @@ const encrypSignature = (parameter = {}, pathname, method, token) => {
     const method_pathname = utils.methodPathConversion(pathname, method) // ${method}_${pathname}_${pathname}_${pathname}
     const parameterStr = utils.splitFill(JSON.stringify(parameter)) // {a:1}777777 = length === 6
     const key = method_pathname + parameterStr
-    
+
     const signature = aesEncrypt({ key, data: token })
     return `${parameterStr[3]}${signature}`
 }
@@ -21,7 +21,7 @@ const decryptSignature = (signature, method_pathname, parameter) => {
     const parameterStr = utils.splitFill(JSON.stringify(parameter)) // {a:1}777777 = length === 6
     const key = method_pathname + parameterStr
     if (signature[0] !== parameterStr[3]) return consequencer.error('')
-    
+
     const encrypted = signature.substr(1)
     const token = aesDecrypt({ key, encrypted })
     return consequencer.success(token)
@@ -31,7 +31,7 @@ const encrypToken = (secret, userId) => {
     const userIdSHA1 = 'db36668fa9a19fde5c9676518f9e86c17cabf65a' // 字符串	userId
     const key = `MD5=${secretMD5}SHA1=${userIdSHA1}`
     const data = { secret, userId }
-    const token =  aesEncrypt({ key, data })
+    const token = aesEncrypt({ key, data })
     return `${secretMD5}${token}${userIdSHA1}`
 }
 const decryptToken = token => {
@@ -39,8 +39,8 @@ const decryptToken = token => {
     const userIdSHA1 = 'db36668fa9a19fde5c9676518f9e86c17cabf65a' // 字符串	userId
     const key = `MD5=${secretMD5}SHA1=${userIdSHA1}`
 
-    if (token.indexOf(secretMD5) === -1 || token.indexOf(userIdSHA1) === -1 ) return consequencer.error('')
-    
+    if (token.indexOf(secretMD5) === -1 || token.indexOf(userIdSHA1) === -1) return consequencer.error('')
+
     const encrypted = token.slice(secretMD5.length, token.length - userIdSHA1.length)
     const { secret, userId } = JSON.parse(aesDecrypt({ key, encrypted }))
     return consequencer.success({ decrypSecret: secret, userId })
@@ -67,11 +67,11 @@ const utils = {
     getAuthToken,
     methodPathConversion: (pathname, method) => '',
     splitFill: (parameter) => '',
-    parameterConversion: (request) => {}
+    parameterConversion: (request) => { }
 }
 
 const storage = {
-    getSecret: () => ({appSecret: 1, isExpire: 2})
+    getSecret: () => ({ appSecret: 1, isExpire: 2 })
 }
 const CONST = {
     tokenExpireCode: 1,

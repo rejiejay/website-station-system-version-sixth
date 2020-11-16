@@ -28,5 +28,4 @@ const clientHttp = {
     requestHandle,
 }
 
-
 export default clientHttp
