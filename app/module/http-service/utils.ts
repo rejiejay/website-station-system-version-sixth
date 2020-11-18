@@ -4,7 +4,7 @@ import * as fs from 'fs'
 
 class ResourcesUtils {
     verifyFilePath(path): Consequencer {
-        return consequencer.success()
+        return fs.existsSync(path) ? consequencer.success() : consequencer.error('The path not- exists')
     }
 
     response404Handle(response) {
@@ -45,7 +45,7 @@ class ResourcesHandle extends ResourcesUtils {
 
     async render(response) {
         const isVerifyFailure = ['html', 'tsx', 'less'].some(async path => {
-            const verifyInstance = await this.verifyFilePath(`./build/${this.url}/index.${path}`)
+            const verifyInstance = await this.verifyFilePath(`./view/${this.url}/index.${path}`)
             return verifyInstance.result !== 1
         })
 
@@ -89,11 +89,19 @@ class ResponseHandle {
 function reqToParameter(request) { }
 function isNeedAuth(request, config) { }
 
+
+export const initWebLibrary = () => {
+    //     const targetFolderPath = buildPath('./web/lib')
+    //     const renderFolderPath = buildPath('./build/lib')
+    //     return await copyDirectory(targetFolderPath, renderFolderPath);
+}
+
 const utils = {
     ResourcesHandle,
     ResponseHandle,
     reqToParameter,
-    isNeedAuth
+    isNeedAuth,
+    initWebLibrary
 }
 
 export default utils
