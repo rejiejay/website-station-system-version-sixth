@@ -18,6 +18,11 @@
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "mysql": "^2.18.1",
-        "websocket": "^1.0.32"
+        "websocket": "^1.0.32",
+        "gulp": "^4.0.2",
+        "gulp-less": "^4.0.1",
+        "webpack": "^4.41.5",
+        "less-plugin-clean-css": "^1.5.1",
+        "uglifyjs-webpack-plugin": "^2.2.0"
     }
 }
