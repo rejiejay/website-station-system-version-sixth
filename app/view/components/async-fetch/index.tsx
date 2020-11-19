@@ -15,7 +15,7 @@ const waitStackInterval = requestStackId => new Promise(async resolve => {
     setTimeout(checkIfResolve, 1000)
 })
 
-const asyncRequestHandle = (resolveRequest, destroyToast) => new Promise(async resolve => {
+const asyncRequestHandle = (resolveRequest): any => new Promise(async resolve => {
     const requestStackId = new Date().getTime() // 表示堆栈的唯一标识
     // 控制反转, 因为执行完毕不是这个方法控制的, 所以将控制权反还回去
     const resolveRequestHandle = result => {
@@ -40,10 +40,13 @@ const asyncRequestHandle = (resolveRequest, destroyToast) => new Promise(async r
 })
 
 // TODO: 暂不处理
-const authHandle = () => new Promise(async resolve => resolve(consequencer.success()))
+const authHandle = (parameter): Promise<Consequencer> => new Promise(async resolve => resolve(consequencer.success()))
+// TODO: 暂不处理
+const initHeaders = (): any => {}
+const queryToUrl = (parameter) => {}
 
 const requestGet = ({ url, parameter, options }) => new Promise(async resolve => {
-    const resolveRequest = await asyncRequestHandle(resolve, destroyToast) // 等待异步的执行, 因为存在权限校验, 所以需要保持请求按照顺序执行
+    const resolveRequest = await asyncRequestHandle(resolve) // 等待异步的执行, 因为存在权限校验, 所以需要保持请求按照顺序执行
 
     const authInstance = await authHandle({ url, method: 'get', parameter })
     if (authInstance.result !== 1) return resolveRequest(authInstance)
@@ -60,7 +63,7 @@ const requestGet = ({ url, parameter, options }) => new Promise(async resolve =>
         if (value.result === 1) return resolveRequest(value)
 
         // 失败的情况
-        if (!hiddenError) AlertPopup(value.message || JSON.stringify(value))
+        // if (!hiddenError) AlertPopup(value.message || JSON.stringify(value))
         resolveRequest(value)
     }
 
@@ -78,8 +81,8 @@ const requestGet = ({ url, parameter, options }) => new Promise(async resolve =>
         )
 })
 
-const requestPost = () => new Promise(async resolve => {
-    const resolveRequest = await asyncRequestHandle(resolve, destroyToast) // 等待异步的执行, 因为存在权限校验, 所以需要保持请求按照顺序执行
+const requestPost = (url, parameter, options) => new Promise(async resolve => {
+    const resolveRequest = await asyncRequestHandle(resolve) // 等待异步的执行, 因为存在权限校验, 所以需要保持请求按照顺序执行
 
     const authInstance = await authHandle({ url, method: 'post', parameter })
     if (authInstance.result !== 1) return resolveRequest(authInstance)
@@ -95,7 +98,7 @@ const requestPost = () => new Promise(async resolve => {
         if (value.result === 1) return resolveRequest(value)
 
         // 失败的情况
-        if (!hiddenError) AlertPopup(value.message || JSON.stringify(value))
+        // if (!hiddenError) AlertPopup(value.message || JSON.stringify(value))
         resolveRequest(value)
     }
 
