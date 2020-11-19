@@ -1,21 +1,23 @@
 {
-  "name": "website-station-system-version-sixth",
-  "version": "0.0.0",
-  "description": "website-station-system-version-sixth",
-  "main": "app.js",
-  "author": {
-    "name": ""
-  },
-  "scripts": {
-    "build": "tsc --build",
-    "clean": "tsc --build --clean"
-  },
-  "devDependencies": {
-    "@types/node": "^8.0.14",
-    "typescript": "^3.2.2"
-  },
-  "dependencies": {
-    "mysql": "^2.18.1",
-    "websocket": "^1.0.32"
-  }
+    "name": "website-station-system-version-sixth",
+    "version": "0.0.0",
+    "description": "website-station-system-version-sixth",
+    "main": "app.js",
+    "author": {
+        "name": ""
+    },
+    "scripts": {
+        "build": "tsc --build",
+        "clean": "tsc --build --clean"
+    },
+    "devDependencies": {
+        "@types/node": "^8.0.14",
+        "typescript": "^3.2.2"
+    },
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "mysql": "^2.18.1",
+        "websocket": "^1.0.32"
+    }
 }
