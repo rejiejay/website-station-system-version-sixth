@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactDOMComponent } from './../utils';
+import utils from './../utils/index';
 
 class WindowsComponent extends React.Component {
     constructor(props: any) {
@@ -34,5 +34,5 @@ class MobileComponent extends React.Component {
     }
 }
 
-const reactDOMComponent = new ReactDOMComponent(WindowsComponent, MobileComponent)
+const reactDOMComponent = new utils.ReactDOMComponent(WindowsComponent, MobileComponent)
 reactDOMComponent.render()
