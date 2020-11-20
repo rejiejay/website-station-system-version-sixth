@@ -1,5 +1,4 @@
 import * as http from 'http'
-import consequencer, { Consequencer } from './../../utils/consequencer'
 import utils from './utils'
 
 function init(config) {
@@ -13,9 +12,13 @@ function init(config) {
 }
 
 async function requestHandle(request, response) {
-    const resource = new this.ResourcesHandle(request, this.config)
-    if (resource.isRender) return await resource.render(response)
-    await resource.static(response)
+    const proxy = new this.WebProxyHandle(request, response, this.config)
+    if (proxy.needProxy) return proxy.pass()
+
+    const resource = new this.ResourcesHandle(request, response, this.config)
+    if (resource.isRender) return await resource.render()
+
+    await resource.static()
 }
 
 const clientHttp = {

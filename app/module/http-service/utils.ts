@@ -5,8 +5,30 @@ import less from 'gulp-less';
 import webpack from 'webpack';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import LessPluginCleanCSS from 'less-plugin-clean-css';
+import httpProxy from 'http-proxy';
 
 import consequencer, { Consequencer } from './../../utils/consequencer'
+
+const proxy = httpProxy.createProxyServer({});
+
+class WebProxyHandle {
+    constructor(request, response, config) {
+        this.proxyUrl = config.development.server.url
+        this.request = request
+        this.response = response
+
+        this.needProxy = request.url.indexOf(config.development.web.fetch.profix) === 0
+    }
+
+    proxyUrl = 'http://127.0.0.1:5050'
+    request
+    response
+    needProxy = false
+
+    pass() {
+        proxy.web(this.request, this.response, { target: this.proxyUrl });
+    }
+}
 
 interface ResponseHandleParame { message?: string, code?: number, contentType?: string }
 class ResourcesUtils {
@@ -200,6 +222,7 @@ export const initWebLibrary = () => {
 }
 
 const utils = {
+    WebProxyHandle,
     ResourcesHandle,
     ResponseHandle,
     reqToParameter,
