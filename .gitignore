@@ -1,9 +1,7 @@
 # compiled output
 node_modules
-bin
-obj
-*.js
-*.js.map
+bin/
+build/
 
 # Logs
 logs

@@ -1,5 +1,5 @@
 import * as crypto from 'crypto'
-import consequencer from './../utils/consequencer'
+import consequencer from '../utils/consequencer'
 
 const aesEncrypt = ({ key, data }) => {
     const cipher = crypto.createCipher('aes192', key)

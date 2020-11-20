@@ -1,29 +1,31 @@
 {
-  "name": "website-station-system-version-sixth",
-  "version": "0.0.0",
-  "description": "website-station-system-version-sixth",
-  "main": "app.js",
-  "author": {
-    "name": ""
-  },
-  "scripts": {
-    "build": "tsc --build",
-    "clean": "tsc --build --clean"
-  },
-  "devDependencies": {
-    "@types/node": "^8.0.14",
-    "typescript": "^3.2.2"
-  },
-  "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-less": "^4.0.1",
-    "http-proxy": "^1.18.1",
-    "less-plugin-clean-css": "^1.5.1",
-    "mysql": "^2.18.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack": "^4.41.5",
-    "websocket": "^1.0.32"
-  }
+    "name": "website-station-system-version-sixth",
+    "version": "6.13.0",
+    "description": "my website station system by typescript version",
+    "main": "app.ts",
+    "author": {
+        "name": "rejiejay-jeker-zeng"
+    },
+    "scripts": {
+        "start": "node start.mjs",
+        "build": "node build.mjs"
+    },
+    "devDependencies": {
+        "@types/node": "^8.0.14",
+        "gulp": "^4.0.0",
+        "gulp-typescript": "^6.0.0-alpha.1",
+        "typescript": "^3.9.7"
+    },
+    "dependencies": {
+        "gulp": "^4.0.2",
+        "gulp-less": "^4.0.1",
+        "http-proxy": "^1.18.1",
+        "less-plugin-clean-css": "^1.5.1",
+        "mysql": "^2.18.1",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "webpack": "^4.41.5",
+        "websocket": "^1.0.32"
+    }
 }

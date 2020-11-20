@@ -1,14 +1,17 @@
+/**
+ * 临时存储, 因为目标是存储代码, 这个文件将会删除
+ */
 import mysql from 'mysql' // https://github.com/mysqljs/mysql
 
 const utils = {
-    onMessage: instance => {},
-    createRandomString: parameter => {},
-    urlToMethod: parameter => {}
+    onMessage: instance => { },
+    createRandomString: parameter => { },
+    urlToMethod: parameter => { }
 }
 
 // for common use, because 2 place have use it
 const http = {
-    createServer: () => {}
+    createServer: () => { }
 }
 
 /** module/websocket.ts = '------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------' */
@@ -20,7 +23,7 @@ const instanceToHandle = ({ instance }) => {
     const responseHandle = {
         json: responseJsonHandle,
         success: (data, message) => responseJsonHandle(consequencer.success(data, message)),
-        failure: (message, result, data) => responseJsonHandle(consequencer.error(message, result, data))  
+        failure: (message, result, data) => responseJsonHandle(consequencer.error(message, result, data))
     }
 
     return responseHandle
@@ -102,7 +105,7 @@ const ServerHttp = {
         const responseHandle = {
             json: responseJsonHandle,
             success: (data, message) => responseJsonHandle(consequencer.success(data, message)),
-            failure: (message, result, data) => responseJsonHandle(consequencer.error(message, result, data))  
+            failure: (message, result, data) => responseJsonHandle(consequencer.error(message, result, data))
         }
 
         const controllerInstance = this.urlToMethod(request.url, request.method)
@@ -150,7 +153,7 @@ const ClientHttp = {
         const responseHanle = {
             json: responseJsonHanle,
             success: (data, message) => responseJsonHanle(consequencer.success(data, message)),
-            failure: (message, result, data) => responseJsonHanle(consequencer.error(message, result, data))  
+            failure: (message, result, data) => responseJsonHanle(consequencer.error(message, result, data))
         }
         method(parameter, responseHanle)
     }
@@ -165,10 +168,10 @@ const NodeMysql = {
     init: function init() {
         const slef = this
         this.instance = mysql.createConnection({
-            host     : 'localhost',
-            user     : 'me',
-            password : 'secret',
-            database : 'my_db'
+            host: 'localhost',
+            user: 'me',
+            password: 'secret',
+            database: 'my_db'
         })
 
         return new Promise(resolve => {
@@ -244,7 +247,7 @@ const encrypSignature = (parameter = {}, pathname, method, token) => {
     const method_pathname = utils.methodPathConversion(pathname, method) // ${method}_${pathname}_${pathname}_${pathname}
     const parameterStr = utils.splitFill(JSON.stringify(parameter)) // {a:1}777777 = length === 6
     const key = method_pathname + parameterStr
-    
+
     const signature = aesEncrypt({ key, data: token })
     return `${parameterStr[3]}${signature}`
 }
@@ -252,7 +255,7 @@ const decryptSignature = (signature, method_pathname, parameter) => {
     const parameterStr = utils.splitFill(JSON.stringify(parameter)) // {a:1}777777 = length === 6
     const key = method_pathname + parameterStr
     if (signature[0] !== parameterStr[3]) return consequencer.error()
-    
+
     const encrypted = signature.substr(1)
     const token = aesDecrypt({ key, encrypted })
     return consequencer.success(token)
@@ -262,7 +265,7 @@ const encrypToken = (secret, userId) => {
     const userIdSHA1 = 'db36668fa9a19fde5c9676518f9e86c17cabf65a' // 字符串	userId
     const key = `MD5=${secretMD5}SHA1=${userIdSHA1}`
     const data = { secret, userId }
-    const token =  aesEncrypt({ key, data })
+    const token = aesEncrypt({ key, data })
     return `${secretMD5}${token}${userIdSHA1}`
 }
 const decryptToken = token => {
@@ -270,8 +273,8 @@ const decryptToken = token => {
     const userIdSHA1 = 'db36668fa9a19fde5c9676518f9e86c17cabf65a' // 字符串	userId
     const key = `MD5=${secretMD5}SHA1=${userIdSHA1}`
 
-    if (token.indexOf(secretMD5) === -1 || token.indexOf(userIdSHA1) === -1 ) return consequencer.error()
-    
+    if (token.indexOf(secretMD5) === -1 || token.indexOf(userIdSHA1) === -1) return consequencer.error()
+
     const encrypted = token.slice(secretMD5.length, token.length - userIdSHA1.length)
     const { secret, userId } = aesDecrypt({ key, encrypted })
     return consequencer.success({ decrypSecret: secret, userId })
