@@ -17,7 +17,7 @@ class WebProxyHandle {
         this.request = request
         this.response = response
 
-        this.needProxy = request.url.indexOf(config.development.web.fetch.profix) === 0
+        this.needProxy = request.url.indexOf(config.development.client.fetch.profix) === 0
     }
 
     proxyUrl = 'http://127.0.0.1:5050'
@@ -214,20 +214,12 @@ class ResponseHandle {
 function reqToParameter(request) { }
 function isNeedAuth(request, config) { }
 
-
-export const initWebLibrary = () => {
-    //     const targetFolderPath = buildPath('./web/lib')
-    //     const renderFolderPath = buildPath('./build/lib')
-    //     return await copyDirectory(targetFolderPath, renderFolderPath);
-}
-
 const utils = {
     WebProxyHandle,
     ResourcesHandle,
     ResponseHandle,
     reqToParameter,
-    isNeedAuth,
-    initWebLibrary
+    isNeedAuth
 }
 
 export default utils

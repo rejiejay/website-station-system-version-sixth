@@ -21,14 +21,18 @@ async function requestHandle(request, response) {
     await resource.static()
 }
 
+export const initWebLibrary = () => {
+    //     const targetFolderPath = buildPath('./web/lib')
+    //     const renderFolderPath = buildPath('./build/lib')
+    //     return await copyDirectory(targetFolderPath, renderFolderPath);
+}
+
 const clientHttp = {
     ...utils,
-
     config: {},
-
     init,
-
     requestHandle,
+    initWebLibrary
 }
 
 export default clientHttp

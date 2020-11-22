@@ -1,5 +1,4 @@
 import * as http from 'http'
-import consequencer, { Consequencer } from './../../utils/consequencer'
 import auth from './../auth'
 import Controller from './../../controller'
 import utils from './utils'
@@ -22,7 +21,7 @@ async function requestHandle(request, response) {
     const parameter = this.reqToParameter(request)
     if (!this.isNeedAuth(request, this.config)) return controller.request(parameter, responseHandle, request)
 
-    const authInstance = await auth.serverHttp(request)
+    const authInstance = await auth.server(request)
     if (authInstance.result !== 1) return responseHandle.json(authInstance)
 
     const userId = authInstance.data

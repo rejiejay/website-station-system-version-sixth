@@ -1,8 +1,17 @@
 import consequencer, { Consequencer } from './../../utils/consequencer'
 import utils from './utils'
 
-function serverHttp() { }
-function webSocket() { }
+function serverHttp(request): Promise<Consequencer> {
+    return new Promise(resolve => {
+        resolve(consequencer.success())
+    })
+}
+
+function webSocket(): Promise<Consequencer> {
+    return new Promise(resolve => {
+        resolve(consequencer.success())
+    })
+}
 
 const auth = {
     ...utils,

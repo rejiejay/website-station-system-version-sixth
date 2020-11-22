@@ -6,7 +6,7 @@
 import auth from './auth'
 
 const openAuth = {
-    server: () => auth.serverHttp(),
+    server: request => auth.serverHttp(request),
     webSocket: () => auth.webSocket()
 }
 
