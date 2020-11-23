@@ -35,8 +35,8 @@ class Base {
             const myFormat = format[key]
             const value = data[key]
             if (myFormat.isRequired) {
-                if (!value) return check = consequencer.error(`${key} is required`)
-                if (typeof value !== myFormat.type) return check = consequencer.error(`${key} need ${myFormat.type}`)
+                if (!value) check = consequencer.error(`${key} is required`)
+                if (typeof value !== myFormat.type) check = consequencer.error(`${key} need ${myFormat.type}`)
             }
         })
         return check

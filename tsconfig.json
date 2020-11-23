@@ -18,6 +18,9 @@
       "dom"
     ]
   },
+  "include": [
+    "app/**/*"
+  ],
   "exclude": [
     "node_modules",
     "app/view"

@@ -7,7 +7,7 @@ const tsProject = ts.createProject('tsconfig.json');
 function init() {
     tsProject.src()
         .pipe(tsProject())
-        .js.pipe(gulp.dest('dist'))
+        .js.pipe(gulp.dest('build'))
         .on('end', () => {
             console.log('渲染完毕')
             execFile('start.bat', [], { cwd: 'D:/my-svn/website-station-system-version-sixth' }, (error, stdout, stderr) => {

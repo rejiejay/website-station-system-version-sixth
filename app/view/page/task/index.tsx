@@ -1,7 +1,8 @@
 import * as React from 'react';
-import utils from './../utils/index';
+import { ReactDOMComponent } from './../../utils/render';
+import Utils from './utils/entry';
 
-class WindowsComponent extends React.Component {
+class TaskFollowUpMobileLayout extends Utils {
     constructor(props: any) {
         super(props)
 
@@ -14,13 +15,11 @@ class WindowsComponent extends React.Component {
     }
 
     render() {
-        return <div
-            onClick={this.fetchTest}
-        >Hello World</div>
+        return <div>Hello World</div>
     }
 }
 
-class MobileComponent extends React.Component {
+class TaskFollowUpComputerLayout extends Utils {
     constructor(props) {
         super(props)
 
@@ -34,5 +33,5 @@ class MobileComponent extends React.Component {
     }
 }
 
-const reactDOMComponent = new utils.ReactDOMComponent(WindowsComponent, MobileComponent)
+const reactDOMComponent = new ReactDOMComponent(TaskFollowUpComputerLayout, TaskFollowUpMobileLayout)
 reactDOMComponent.render()
