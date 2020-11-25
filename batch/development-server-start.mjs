@@ -6,11 +6,11 @@ import http from './../build/app/module/http-service'
 import configuration from './../build/app/config/index'
 
 const server = await http.initServer(configuration)
-await Websocket.init(server, configuration)
+await Websocket.init(server)
 
 process.on('message', async message => {
     if (message === 'kill') {
         await http.killServer()
-        process.send('kill-success')
+        if (process && process.send) process.send('kill-success')
     }
 })

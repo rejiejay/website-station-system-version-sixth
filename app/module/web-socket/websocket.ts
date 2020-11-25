@@ -1,14 +1,15 @@
-import { server as WebSocketServer } from 'websocket'
+import * as WebSocket from 'ws'
 import utils from './utils'
 
-function init(config) {
+function init(server) {
     const slef = this
 
     return new Promise(resolve => {
         // https://github.com/theturtle32/WebSocket-Node
-        const wss = new WebSocketServer(config, () => resolve())
+        const wss = new WebSocket.Server({ server })
         slef.instance = wss
         wss.on('connection', slef.connection)
+        resolve()
     })
 }
 

@@ -9,7 +9,7 @@ function init(config) {
 
     return new Promise(resolve => {
         const server = http.createServer(slef.requestHandle)
-        server.listen(config.port, config.host, () => resolve())
+        server.listen(config.port, config.host, () => resolve(server))
     })
 }
 

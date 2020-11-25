@@ -1,14 +1,18 @@
 {
     "name": "website-station-system-version-sixth",
-    "version": "6.13.0",
+    "version": "6.1.14",
     "description": "my website station system by typescript version",
     "main": "app.ts",
     "author": {
         "name": "rejiejay-jeker-zeng"
     },
+    "type": "module",
     "scripts": {
-        "start": "node start.mjs",
-        "build": "node build.mjs"
+        "build-ts": "node batch/gulp-typescript-build.mjs",
+        "build-client": "node batch/production-client-build.mjs",
+        "start-local": "node batch/development-start.mjs",
+        "start-dev": "node build/app.js",
+        "start-pro": "node batch/production-server-start.mjs"
     },
     "devDependencies": {
         "@types/node": "^8.0.14",
@@ -26,6 +30,6 @@
         "react-dom": "^16.13.1",
         "uglifyjs-webpack-plugin": "^2.2.0",
         "webpack": "^4.41.5",
-        "websocket": "^1.0.32"
+        "ws": "^7.4.0"
     }
 }
