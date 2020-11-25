@@ -1,11 +1,11 @@
 import * as Path from 'path'
 import * as fs from 'fs'
-import gulp from 'gulp';
-import less from 'gulp-less';
-import webpack from 'webpack';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
-import LessPluginCleanCSS from 'less-plugin-clean-css';
-import httpProxy from 'http-proxy';
+import * as gulp from 'gulp';
+import * as less from 'gulp-less';
+import * as webpack from 'webpack';
+import * as UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import * as LessPluginCleanCSS from 'less-plugin-clean-css';
+import * as httpProxy from 'http-proxy';
 
 import consequencer, { Consequencer } from './../../utils/consequencer'
 

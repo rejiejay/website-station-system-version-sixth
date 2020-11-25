@@ -1,6 +1,6 @@
 import { PathLike } from 'fs';
 import * as path from 'path';
 
-const __dirname = path.resolve(path.dirname(''));
+const driveName = path.resolve(path.dirname(''));
 
-export const projectRelativePath = (relativePath): PathLike => path.join(__dirname, path.relative(__dirname, relativePath));
+export const projectRelativePath = (relativePath): PathLike => path.join(driveName, path.relative(driveName, relativePath));

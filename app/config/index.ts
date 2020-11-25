@@ -9,6 +9,8 @@ const configuration = {
             url: '' // 服务地址
         },
         client: {
+            port: '8080',
+            host: '0.0.0.0',
             url: '', // 服务地址
             fetch: {
                 profix: '' // 请求服务端的前缀
